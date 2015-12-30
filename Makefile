@@ -11,7 +11,7 @@ CFLAGS = -O3 -L. $(LDFLAGS)
 OBJS = util.o
 
 # Targets:
-all:	upstream downstream clean
+all:	upstream downstream sounddemo
 
 upstream:	upstream.o $(OBJS)
 	$(CC) -o $@ $(OBJS) upstream.o $(CFLAGS)
@@ -19,11 +19,14 @@ upstream:	upstream.o $(OBJS)
 downstream:	downstream.o $(OBJS)
 	$(CC) -o $@ $(OBJS) downstream.o $(CFLAGS)
 
+sounddemo: sounddemo.o
+	$(CC) -o $(@) sounddemo.o
+
 clean:
 	rm -f *.o
 
 cleanall:	clean
-	rm -f downstream upstream a.out
+	rm -f downstream upstream sounddemo a.out
 
 # Suffixes:
 .SUFFIXES:	.c
