@@ -1,6 +1,6 @@
 /*  util.c: A program for parsing arguments and setting up CAN communication
  *  using the Kvaser CANlib API.
- *  Copyright (C) 2016 Andreas Skyman (skymandr (kanelbulle) fripost dot org)
+ *  Copyright (C) 2016 Andreas Skyman <skymandr (kanelbulle) fripost dot org>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,12 +20,21 @@
 #define _UTIL_H_
 
 #include <canlib.h>
+#include <argp.h>
 
 
+// Functions for CANlib communication:
 void check (char* id, canStatus stat);
-void printArgHelp (void);
-int parseArgs (int argc, char* argv[], int* channel, int* bitrate,
-               int* bitrateFd, int* dlc);
-canHandle initialise (int channel, int bitrate, int bitrateFd);
+
+canHandle initHandle (int channel, int bitrate, int bitrateFd);
+
+// Functions and constants for argument parser:
+struct arguments{
+    int channel, bitrate, bitrateFd, dlc;
+};
+
+error_t parseArg (int key, char* arg, struct argp_state* state);
+
+int parseArgs (int argc, char* argv[], struct arguments* arguments);
 
 #endif

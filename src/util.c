@@ -1,6 +1,6 @@
 /*  util.c: A program for parsing arguments and setting up CAN communication
  *  using the Kvaser CANlib API.
- *  Copyright (C) 2016 Andreas Skyman (skymandr (kanelbulle) fripost dot org)
+ *  Copyright (C) 2016 Andreas Skyman <skymandr (kanelbulle) fripost dot orgr>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,6 +23,65 @@
 #include "util.h"
 
 
+// Functions and definitions for argument parser:
+
+/* The options the parser understands. */
+struct argp_option options[] = {
+  {"channel",   'c', "CHAN", 0, "CAN channel" },
+  {"bitrate",   'b', "BR",   0, "CAN bitrate/CAN FD arbitration bitrate" },
+  {"bitratefd", 'f', "BRFD", 0, "CAN FD bitrate" },
+  {"dlc",       'l', "DLC",  0, "data length code or number of bytes" },
+  { 0 }
+};
+
+extern char doc[];
+
+static struct argp argp = { options, parseArg, doc, "" };
+
+error_t parseArg (int key, char* arg, struct argp_state* state)
+{
+  /* Get the input argument from argp_parse, which we
+     know is a pointer to our arguments structure. */
+  struct arguments *arguments = state->input;
+
+  switch (key)
+    {
+    case 'c':
+      arguments->channel = atoi(arg);
+      break;
+    case 'b':
+      arguments->bitrate = atoi(arg);
+      break;
+    case 'f':
+      arguments->bitrateFd = atoi(arg);
+      break;
+    case 'l':
+      arguments->dlc = atoi(arg);
+      break;
+
+    case ARGP_KEY_END:
+      break;
+
+    default:
+      return ARGP_ERR_UNKNOWN;
+    }
+
+  return 0;
+}
+
+int parseArgs (int argc, char* argv[], struct arguments* arguments)
+{
+    int i;
+    int status = 0;
+
+    argp_parse(&argp, argc, argv, 0, 0, &arguments);
+
+    return status;
+}
+
+
+// Functions for CANlib communication:
+
 void check (char* id, canStatus stat)
 {
   char buf[50];
@@ -36,23 +95,7 @@ void check (char* id, canStatus stat)
   }
 }
 
-void printArgHelp (void)
-{
-    printf("These are the valid arguments and their default values:\n");
-    printf("  -c --channel       (0)    CAN channel\n");
-    printf("  -B --bitrate  (100000)    CAN bitrate/FD arbitration bitrate\n");
-    printf("  -F --bitratefd     (0)    CAN FD data phase bitrate\n");
-    printf("  -l --dlc           (8)     dlc or number of data bytes\n");
-}
-
-int parseArgs (int argc, char* argv[], int* channel, int* bitrate,
-               int* bitrateFd, int* dlc)
-{
-    int status = -1;
-    return status;
-}
-
-canHandle initialise (int channel, int bitrate, int bitrateFd)
+canHandle initHandle (int channel, int bitrate, int bitrateFd)
 {
     canHandle handle;
 

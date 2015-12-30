@@ -10,7 +10,7 @@ SRCDIR = src
 LDFLAGS = -lcanlib -lpthread
 
 # Compiler optionsh
-CFLAGS = -O3 -L. $(LDFLAGS) -I$(IDIR)
+CFLAGS = -O3 -L. $(LDFLAGS) -I$(IDIR) -ggdb
 
 # Objects:
 _OBJ = util.o
@@ -22,7 +22,7 @@ all:	upstream downstream sounddemo
 $(ODIR)/%.o: $(SRCDIR)/%.c
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-upstream:	$(OBJ) $(ODIR)/upstream.o
+upstream:	$(ODIR)/upstream.o $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
 downstream:	$(OBJ) $(ODIR)/downstream.o

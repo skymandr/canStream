@@ -1,6 +1,6 @@
 /*  upstream: A program for reading data from stdin and sending it over a
  *  CAN bus using the Kvaser CANlib API.
- *  Copyright (C) 2016 Andreas Skyman (skymandr (kanelbulle) fripost dot org)
+ *  Copyright (C) 2016 Andreas Skyman <skymandr (kanelbulle) fripost dot orgr>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,31 +21,42 @@
 
 #include "util.h"
 
+const char* argp_program_version = "upstream v0.1";
 
-void printHelp(void) {
-    printf("upstream, version 0.1:\n");
-    printf("Copyright (C) 2015  Andreas Skyman\n");
-    printf("A program for reading data from stdin and sending it over the\n");
-    printf("CAN bus using the Kvaser CANlib API.\n");
-    printf("\n");
-    printArgHelp();
-    printf("\n");
-    printf("This program comes with ABSOLUTELY NO WARRANTY.\n");
-    printf("This is free software, and you are welcome to redistribute it\n");
-    printf("under the terms of the GNU General Public License version 3.\n");
-}
+const char* argp_program_bug_address = "<skymandr@fripost.org>";
+
+char doc[] = "A program for reading data from stdin and sending it over the\n"
+             "CAN bus using the Kvaser CANlib API.";
+
 
 int main(int argc, char* argv[]) {
     int channel, bitrate, bitrateFd, dlc;
     int status = 0;
     canHandle handle;
+    struct arguments args;
 
-    status = parseArgs(argc, argv, &channel, &bitrate, &bitrateFd, &dlc);
+    // Set default arguments:
+    args.channel = 0;
+    args.bitrate = 100000;
+    args.bitrateFd = 0;
+    args.dlc = 8;
+
+    // Parse arguments:
+    status = parseArgs(argc, argv, &args);
     if (status != 0) {
-        printHelp();
         return status;
     }
-    handle = initialise(channel, bitrate, bitrateFd);
+
+    // Initialise handle:
+    handle = initHandle(channel, bitrate, bitrateFd);
+
+    // If handle was ok, start main loop, else abort:
+    if (handle == -1) {
+        printf("Could not initialise handle. Aborting...\n");
+        status = handle;
+    } else {
+        printf("Splendid!\n");
+    }
 
     return status;
 }
