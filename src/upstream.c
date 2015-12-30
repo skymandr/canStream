@@ -39,11 +39,11 @@ int main (int argc, char* argv[]) {
 
     // Set default arguments:
     args.channel = 0;
-    args.bitrate = 100000;
+    args.bitrate = 1000000;
     args.bitrateFd = 0;
     args.dlc = 8;
     args.id = 42;
-    args.timeout = 512;
+    args.timeout = 256;
 
     // Parse arguments:
     status = parseArgs(argc, argv, &args);
@@ -58,7 +58,7 @@ int main (int argc, char* argv[]) {
     }
 
     // Initialise handle:
-    handle = initHandle(channel, bitrate, bitrateFd);
+    handle = initHandle(args.channel, args.bitrate, args.bitrateFd);
 
     // If handle was ok, start main loop, else abort:
     if (handle == -1) {
@@ -68,11 +68,11 @@ int main (int argc, char* argv[]) {
         printf("Splendid! Will now listen to stdin and send what I find.\n");
         printf("Press ^C to quit.\n");
         while(status == 0) {
-            for(i = 0; i < dlc; i++) {
+            for(i = 0; i < args.dlc; i++) {
                 data[i] = getchar();
             }
-            check("canWrite", canWrite(handle, args.id, data, args.dlc, 0));
-            check("canWritesync", canWriteSync(handle, args.timeout));
+            status = canWrite(handle, args.id, data, args.dlc, 0);
+            status = canWriteSync(handle, args.timeout);
         }
         check("canClose", canClose(handle));
     }

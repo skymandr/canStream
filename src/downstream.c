@@ -41,11 +41,11 @@ int main (int argc, char* argv[]) {
 
     // Set default arguments:
     args.channel = 1;
-    args.bitrate = 100000;
+    args.bitrate = 1000000;
     args.bitrateFd = 0;
     args.dlc = 8;
     args.id = 42;
-    args.timeout = 512;
+    args.timeout = -1;
 
     // Parse arguments:
     status = parseArgs(argc, argv, &args);
@@ -60,7 +60,7 @@ int main (int argc, char* argv[]) {
     }
 
     // Initialise handle:
-    handle = initHandle(channel, bitrate, bitrateFd);
+    handle = initHandle(args.channel, args.bitrate, args.bitrateFd);
 
     // If handle was ok, start main loop, else abort:
     if (handle == -1) {
@@ -71,8 +71,8 @@ int main (int argc, char* argv[]) {
                "find.\n");
         printf("Press ^C to quit.\n");
         while(status == 0) {
-            check("canReadWait", canReadWait(handle, &id, &message, &dlc,
-                                             &flags, &time, args.timeout));
+            status = canReadWait(handle, &id, &message, &dlc, &flags, &time,
+                                 args.timeout);
             for(i = 0; i < dlc; i++) {
                 putchar(message[i]);
             }
@@ -80,5 +80,6 @@ int main (int argc, char* argv[]) {
         check("canClose", canClose(handle));
     }
 
+    printf("%d\n", status);
     return status;
 }

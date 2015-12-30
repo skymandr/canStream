@@ -87,6 +87,14 @@ int parseArgs (int argc, char* argv[], struct arguments* arguments)
 
 // Functions for CANlib communication:
 
+int getPredefBitrate(int bitrate) {
+    return BAUD_1M;
+}
+
+int getPredefBitrateFd(int bitrateFd) {
+    return 0;
+}
+
 void check (char* id, canStatus stat)
 {
     char buf[50];
@@ -117,7 +125,12 @@ canHandle initHandle (int channel, int bitrate, int bitrateFd)
 
     /* Make sure to go bus off before setting bus parameters */
     canBusOff(handle);
-    check("canSetBusParams", canSetBusParams(handle, bitrate, 0, 0, 0, 0, 0));
+
+    /* Translate the specified bitrate to CANlib constant */
+    bitrate = getPredefBitrate(bitrate);
+
+    /* Set bus parameters */
+    check("canSetBusParams", canSetBusParams(handle, BAUD_1M, 0, 0, 0, 0, 0));
 
     /* If FD bitrate has been specified, set also FD bitrate */
     if (bitrateFd) {
