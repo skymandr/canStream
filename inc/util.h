@@ -30,7 +30,8 @@ canHandle initHandle (int channel, int bitrate, int bitrateFd);
 
 // Functions and constants for argument parser:
 struct arguments{
-    int channel, bitrate, bitrateFd, dlc;
+    int channel, bitrate, bitrateFd;
+    unsigned int dlc;
 };
 
 error_t parseArg (int key, char* arg, struct argp_state* state);

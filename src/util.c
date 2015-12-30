@@ -84,15 +84,15 @@ int parseArgs (int argc, char* argv[], struct arguments* arguments)
 
 void check (char* id, canStatus stat)
 {
-  char buf[50];
+    char buf[50];
 
-  buf[0] = '\0';
-  canGetErrorText(stat, buf, sizeof(buf));
-  if (stat != canOK) {
-    printf("%s: failed, stat=%d (%s)\n", id, (int)stat, buf);
-  } else {
-    printf("%s: OK\n", id);
-  }
+    buf[0] = '\0';
+    canGetErrorText(stat, buf, sizeof(buf));
+    if (stat != canOK) {
+        printf("%s: failed, stat=%d (%s)\n", id, (int)stat, buf);
+    } else {
+        printf("%s: OK\n", id);
+    }
 }
 
 canHandle initHandle (int channel, int bitrate, int bitrateFd)

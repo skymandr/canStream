@@ -29,8 +29,10 @@ char doc[] = "A program for reading data from stdin and sending it over the\n"
              "CAN bus using the Kvaser CANlib API.";
 
 
-int main(int argc, char* argv[]) {
-    int channel, bitrate, bitrateFd, dlc;
+int main (int argc, char* argv[]) {
+    int channel, bitrate, bitrateFd, i;
+    unsigned int dlc;
+    unsigned char data[64] = {0};
     int status = 0;
     canHandle handle;
     struct arguments args;
@@ -55,7 +57,16 @@ int main(int argc, char* argv[]) {
         printf("Could not initialise handle. Aborting...\n");
         status = handle;
     } else {
-        printf("Splendid!\n");
+        printf("Splendid! Will now listen to stdin and send what I find.\n");
+        printf("Press ^C to quit.\n");
+        while(status == 0) {
+            for(i = 0; i < dlc; i++) {
+                data[i] = getchar();
+            }
+            check("canWrite", canWrite(handle, 42, data, args.dlc, 0));
+            check("canWritesync", canWriteSync(handle, 512));
+        }
+        check("canClose", canClose(handle));
     }
 
     return status;

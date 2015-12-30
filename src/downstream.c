@@ -29,8 +29,12 @@ char doc[] = "A program for reading data from a CAN bus using the Kvaser\n"
              "CANlib API and sending it to stdout\n";
 
 
-int main(int argc, char* argv[]) {
-    int channel, bitrate, bitrateFd, dlc;
+int main (int argc, char* argv[]) {
+    int channel, bitrate, bitrateFd, i;
+    unsigned int flags, dlc;
+    long id;
+    unsigned long time;
+    unsigned char message[64] = {0};
     int status = 0;
     canHandle handle;
     struct arguments args;
@@ -55,7 +59,17 @@ int main(int argc, char* argv[]) {
         printf("Could not initialise handle. Aborting...\n");
         status = handle;
     } else {
-        printf("Splendid!\n");
+        printf("Splendid! Will now look for messages and print what I"
+                "find.\n");
+        printf("Press ^C to quit.\n");
+        while(status == 0) {
+            check("canReadWait", canReadWait(handle, &id, &message, &dlc,
+                                             &flags, &time, -1));
+            for(i = 0; i < dlc; i++) {
+                putchar(message[i]);
+            }
+        }
+        check("canClose", canClose(handle));
     }
 
     return status;
