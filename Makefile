@@ -20,6 +20,7 @@ OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 all:	upstream downstream sounddemo
 
 $(ODIR)/%.o: $(SRCDIR)/%.c
+	mkdir -p $(ODIR)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 upstream:	$(ODIR)/upstream.o $(OBJ)
@@ -34,7 +35,7 @@ sounddemo:
 .PHONY: clean cleanall
 
 clean:
-	rm -f $(ODIR)/*.o
+	rm -rf $(ODIR)
 
 cleanall:	clean
 	rm -f upstream downstream sounddemo
