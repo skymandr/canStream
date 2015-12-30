@@ -74,7 +74,7 @@ int parseArgs (int argc, char* argv[], struct arguments* arguments)
     int i;
     int status = 0;
 
-    argp_parse(&argp, argc, argv, 0, 0, &arguments);
+    status = argp_parse(&argp, argc, argv, 0, 0, &arguments);
 
     return status;
 }
