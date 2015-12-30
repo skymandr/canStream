@@ -32,7 +32,9 @@ Work log:
 
 Remains:
  - Check return status from parsing
- - Use parsed arguments to initialise handle
+ - Use parsed arguments to initialise channel
+ - Use parsed arguments to set busrate
+ - Use parsed arguments to set dlc
  - Write documentation in README.md
  - Add to GitHub
  - Filter on message id?
