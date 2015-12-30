@@ -3,7 +3,6 @@ CC = gcc
 
 # Directories:
 ODIR = objects
-BINDIR = bin
 IDIR = inc
 SRCDIR = src
 
@@ -24,13 +23,13 @@ $(ODIR)/%.o: $(SRCDIR)/%.c
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 upstream:	$(OBJ) $(ODIR)/upstream.o
-	$(CC) -o $(BINDIR)/$@ $^ $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS)
 
 downstream:	$(OBJ) $(ODIR)/downstream.o
-	$(CC) -o $(BINDIR)/$@ $^ $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS)
 
 sounddemo:
-	$(CC) -o $(BINDIR)/$@ $(SRCDIR)/sounddemo.c
+	$(CC) -o $@ $(SRCDIR)/sounddemo.c
 
 .PHONY: clean cleanall
 
@@ -38,4 +37,4 @@ clean:
 	rm -f $(ODIR)/*.o
 
 cleanall:	clean
-	rm -f bin/*
+	rm -f upstream downstream sounddemo
