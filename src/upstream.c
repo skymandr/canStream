@@ -51,6 +51,12 @@ int main (int argc, char* argv[]) {
         return status;
     }
 
+    // CAN FD is not yet implemented...
+    if (args.bitrateFd != 0) {
+        printf("CAN FD not yet implemented, sorry...\n");
+        printf("Will try to proceed with classic CAN!\n");
+    }
+
     // Initialise handle:
     handle = initHandle(channel, bitrate, bitrateFd);
 

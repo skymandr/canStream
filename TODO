@@ -27,12 +27,12 @@ Work log:
  - Implemeted main frame work including argument parsing and overall structure
  - Implemented read from stdin and sent messages to bus in upstream
  - Implemented read messages from bus and print to stdout in downstream
+ - Notifies user that CAN FD is not yet supported
 
 
 Remains:
  - Check return status from parsing
  - Use parsed arguments to initialise handle
- - Notify user that CAN FD is not yet supported
  - Write documentation in README.md
  - Add to GitHub
  - Filter on message id?
