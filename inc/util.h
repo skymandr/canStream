@@ -32,6 +32,8 @@ canHandle initHandle (int channel, int bitrate, int bitrateFd);
 struct arguments{
     int channel, bitrate, bitrateFd;
     unsigned int dlc;
+    long id;
+    unsigned long timeout;
 };
 
 error_t parseArg (int key, char* arg, struct argp_state* state);

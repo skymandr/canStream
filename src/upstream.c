@@ -42,6 +42,8 @@ int main (int argc, char* argv[]) {
     args.bitrate = 100000;
     args.bitrateFd = 0;
     args.dlc = 8;
+    args.id = 42;
+    args.timeout = 512;
 
     // Parse arguments:
     status = parseArgs(argc, argv, &args);
@@ -63,8 +65,8 @@ int main (int argc, char* argv[]) {
             for(i = 0; i < dlc; i++) {
                 data[i] = getchar();
             }
-            check("canWrite", canWrite(handle, 42, data, args.dlc, 0));
-            check("canWritesync", canWriteSync(handle, 512));
+            check("canWrite", canWrite(handle, args.id, data, args.dlc, 0));
+            check("canWritesync", canWriteSync(handle, args.timeout));
         }
         check("canClose", canClose(handle));
     }

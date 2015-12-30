@@ -1,21 +1,23 @@
 Declaration of intent:
 
 1. program which reads from stdin to a buffer, and prints to stdout when full
-   - test by piping the music from a.out to aplay via the program
+   - test by piping the music from sounddemo to aplay via the program
 
 2. program which opens a canHandle, then reads from stdin to a buffer and sends
    a canMessage when the buffer is full.
    - should take channel as argument (default 0)
    - should take help argument
-   - should maybe take optional msg ID as argument
-   - should maybe take optional dlc as argument
+   - should take optional msg ID as argument
+   - should take optional dlc as argument
+   - should take optional timeout as argument
 
 3. program which opens a canHandle, then reads canMessages and prints their
    contents to stdout
    - should take channel as argument (default 1)
    - should take help argument
-   - should maybe take optional msg ID as argument
-   - should maybe take optional dlc as argument
+   - should take optional msg ID as argument
+   - should take optional dlc as argument
+   - should take optional timeout as argument
 
 4. test 2 and 3 together by piping a.out to 2, and piping 3 to aplay in a
    different terminal (preferably on a different machine)
@@ -23,13 +25,15 @@ Declaration of intent:
 
 Work log:
  - Implemeted main frame work including argument parsing and overall structure
+ - Implemented read from stdin and sent messages to bus in upstream
+ - Implemented read messages from bus and print to stdout in downstream
 
 
 Remains:
  - Check return status from parsing
  - Use parsed arguments to initialise handle
  - Notify user that CAN FD is not yet supported
- - Read from stdin and sent messages in upstream
- - Read messages and print to stdout in downstream
- - CAN FD support
+ - Write documentation in README.md
  - Add to GitHub
+ - Filter on message id?
+ - CAN FD support

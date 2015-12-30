@@ -44,6 +44,8 @@ int main (int argc, char* argv[]) {
     args.bitrate = 100000;
     args.bitrateFd = 0;
     args.dlc = 8;
+    args.id = 42;
+    args.timeout = 512;
 
     // Parse arguments:
     status = parseArgs(argc, argv, &args);
@@ -60,11 +62,11 @@ int main (int argc, char* argv[]) {
         status = handle;
     } else {
         printf("Splendid! Will now look for messages and print what I"
-                "find.\n");
+               "find.\n");
         printf("Press ^C to quit.\n");
         while(status == 0) {
             check("canReadWait", canReadWait(handle, &id, &message, &dlc,
-                                             &flags, &time, -1));
+                                             &flags, &time, args.timeout));
             for(i = 0; i < dlc; i++) {
                 putchar(message[i]);
             }

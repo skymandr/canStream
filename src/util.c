@@ -31,6 +31,8 @@ struct argp_option options[] = {
   {"bitrate",   'b', "BR",   0, "CAN bitrate/CAN FD arbitration bitrate" },
   {"bitratefd", 'f', "BRFD", 0, "CAN FD bitrate" },
   {"dlc",       'l', "DLC",  0, "data length code or number of bytes" },
+  {"id",        'i', "ID",   0, "message id" },
+  {"timeout",   't', "TIME", 0, "time (ms) to wait when sending/receiving" },
   { 0 }
 };
 
@@ -57,6 +59,9 @@ error_t parseArg (int key, char* arg, struct argp_state* state)
       break;
     case 'l':
       arguments->dlc = atoi(arg);
+      break;
+    case 'i':
+      arguments->id = atol(arg);
       break;
 
     case ARGP_KEY_END:
