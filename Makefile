@@ -8,27 +8,29 @@ LDFLAGS = -lcanlib -lpthread
 CFLAGS = -O3 -L. $(LDFLAGS)
 
 # Objects:
-OBJS = util.o
+ODIR = objects
+_OBJ = util.o
+OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 # Targets:
 all:	upstream downstream sounddemo
 
-upstream:	upstream.o $(OBJS)
-	$(CC) -o $@ $(OBJS) upstream.o $(CFLAGS)
+$(ODIR)/%.o: %.c
+	$(CC) -c -o $@ $< $(CFLAGS)
 
-downstream:	downstream.o $(OBJS)
-	$(CC) -o $@ $(OBJS) downstream.o $(CFLAGS)
+upstream:	$(OBJ) upstream.o
+	$(CC) -o $@ $^ $(CFLAGS)
 
-sounddemo: sounddemo.o
-	$(CC) -o $(@) sounddemo.o
+downstream:	$(OBJ) downstream.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
+sounddemo:
+	$(CC) -o $@ sounddemo.c
+
+.PHONY: clean cleanall
 
 clean:
-	rm -f *.o
+	rm -f *.o $(ODIR)/*.o
 
 cleanall:	clean
-	rm -f downstream upstream sounddemo a.out
-
-# Suffixes:
-.SUFFIXES:	.c
-.c.o:
-	$(CC) -c $< $(CFLAGS)
+	rm -f downstream upstream sounddemo a.out bin/*
