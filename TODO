@@ -28,6 +28,7 @@ Work log:
  - Implemented read from stdin and sent messages to bus in upstream
  - Implemented read messages from bus and print to stdout in downstream
  - Notifies user that CAN FD is not yet supported
+ - Written draft of documentation in README.md
 
 
 Remains:
@@ -35,7 +36,9 @@ Remains:
  - Use parsed arguments to initialise channel
  - Use parsed arguments to set busrate
  - Use parsed arguments to set dlc
- - Write documentation in README.md
+ - Finish markup of documentation in README.md
+ - Add CANon example (instead of sounddemo?)
+ - See what can be done about the filesize...
  - Add to GitHub
  - Filter on message id?
  - CAN FD support
