@@ -1,3 +1,5 @@
+Declaration of intent:
+
 1. program which reads from stdin to a buffer, and prints to stdout when full
    - test by piping the music from a.out to aplay via the program
 
@@ -17,3 +19,16 @@
 
 4. test 2 and 3 together by piping a.out to 2, and piping 3 to aplay in a
    different terminal (preferably on a different machine)
+
+
+Work log:
+ - Implemeted main frame work including argument parsing and overall structure
+
+
+Remains:
+ - Check return status from parsing
+ - Use parsed arguments to initialise handle
+ - Notify user that CAN FD is not yet supported
+ - Read from stdin and sent messages in upstream
+ - Read messages and print to stdout in downstream
+ - CAN FD support
