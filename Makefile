@@ -1,17 +1,17 @@
 # Compiler:
 CC = gcc
 
-# Linking:
-LDFLAGS = -lcanlib -lpthread
-
-# Compiler optionsh
-CFLAGS = -O3 -L. $(LDFLAGS)
-
 # Directories:
 ODIR = objects
 BINDIR = bin
 IDIR = inc
 SRCDIR = src
+
+# Linking:
+LDFLAGS = -lcanlib -lpthread
+
+# Compiler optionsh
+CFLAGS = -O3 -L. $(LDFLAGS) -I$(IDIR)
 
 # Objects:
 _OBJ = util.o
