@@ -1,0 +1,19 @@
+1. program which reads from stdin to a buffer, and prints to stdout when full
+   - test by piping the music from a.out to aplay via the program
+
+2. program which opens a canHandle, then reads from stdin to a buffer and sends
+   a canMessage when the buffer is full.
+   - should take channel as argument (default 0)
+   - should take help argument
+   - should maybe take optional msg ID as argument
+   - should maybe take optional dlc as argument
+
+3. program which opens a canHandle, then reads canMessages and prints their
+   contents to stdout
+   - should take channel as argument (default 1)
+   - should take help argument
+   - should maybe take optional msg ID as argument
+   - should maybe take optional dlc as argument
+
+4. test 2 and 3 together by piping a.out to 2, and piping 3 to aplay in a
+   different terminal (preferably on a different machine)
