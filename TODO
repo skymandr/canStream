@@ -37,8 +37,7 @@ Remains:
  - Use parsed arguments to set busrate
  - Use parsed arguments to set dlc
  - Finish markup of documentation in README.md
- - Add CANon example (instead of sounddemo?)
- - See what can be done about the filesize...
+ - Add and test CANon example (instead of sounddemo?)
  - Add to GitHub
  - Filter on message id?
  - CAN FD support
