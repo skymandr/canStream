@@ -116,3 +116,11 @@ License:
 
 The source is released under the GNU General Public License version 3 (GPLv3),
 except sounddemo.c which is public domain. See COPYING.txt for deails on GPLv3!
+CANon.wav is derivative of
+  https://en.wikipedia.org/wiki/File:Canon_and_Gigue_in_D.ogg
+by Jeffrey C. Hall, which is freely available under the Creative Commons
+Attribution-Share Alike 3.0 Unported license; see
+
+  https://creativecommons.org/licenses/by-sa/3.0/deed.en
+
+for details!
