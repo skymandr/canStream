@@ -20,7 +20,7 @@ OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 # Targets:
 all:	upstream downstream sounddemo
 
-$(ODIR)/%.o: %.c
+$(ODIR)/%.o: $(SRCDIR)/%.c
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 upstream:	$(OBJ) $(ODIR)/upstream.o
@@ -30,7 +30,7 @@ downstream:	$(OBJ) $(ODIR)/downstream.o
 	$(CC) -o $(BINDIR)/$@ $^ $(CFLAGS)
 
 sounddemo:
-	$(CC) -o $(BINDIR)/$@ sounddemo.c
+	$(CC) -o $(BINDIR)/$@ $(SRCDIR)/sounddemo.c
 
 .PHONY: clean cleanall
 
