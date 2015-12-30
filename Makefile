@@ -10,7 +10,7 @@ SRCDIR = src
 LDFLAGS = -lcanlib -lpthread
 
 # Compiler optionsh
-CFLAGS = -O3 -L. $(LDFLAGS) -I$(IDIR) -ggdb
+CFLAGS = -O3 -L. $(LDFLAGS) -I$(IDIR)
 
 # Objects:
 _OBJ = util.o
