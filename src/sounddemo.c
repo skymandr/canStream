@@ -1,5 +1,5 @@
 // sounddemo:
-// Online music examples from
+// One line algorithmic music examples from
 //     http://countercomplex.blogspot.com/search/label/algorithmic%20music
 // To test, compile, run and pipe to e.g. aplay:
 //     $ gcc sounddemo.c -o sounddemo && sounddemo | aplay
