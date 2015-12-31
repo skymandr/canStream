@@ -33,12 +33,14 @@ Work log:
  - Uses parsed arguments to set dlc
  - Added and tested CANon example
  - Finished markup of documentation in README.md
+ - Argument parser is not broken anymore
+ - Verified that parsed arguments can be used to initialise channel
+ - Verified that parsed arguments can be used to set dlc
+ - Verified that parsed arguments can be used to set id
+ - Verified that parsed arguments can be used to set timeout
 
 
 Remains:
- - Argument parser is broken!
- - Verify that parsed arguments can be used to initialise channel
- - Verify that parsed arguments can be used to set dlc
  - Use parsed arguments to set busrate
  - Add to GitHub
  - Filter on message id?
