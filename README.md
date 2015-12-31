@@ -69,8 +69,8 @@ the stream as sound:
 
   $ ./downstream | aplay
 
-(The aplay program supports many different sound streams, but the default is
-mono in 8000 kHz, see "man aplay for details.)
+(The _aplay_ program supports many different sound streams, but the default is
+mono in 8000 kHz, see "man aplay" for details.)
 
 To save the results to a file, you can use:
 
@@ -93,7 +93,20 @@ However, sound is much more fun!  Test it using the sounddemo:
 
 If all is setup OK, and your CAN bus is properly terminated (120 Ohm -- never
 forget!), then you should now receive output on your listening end, either in
-writing or as sweet electronic music!
+writing or as sweet electronic beats!
+
+The reason the _sounddemo_ works is that raw sound is digitally represented as
+stream of bytes, which maps directly to the waveform of the sound.  The same
+goes for uncompressed sound formats, such as _wav_. In fact, lets try that
+next!  Under the _data_ folder, you can find a file called _CANon.wav_.  Let's
+try piping its contents just like we piped this README before.  With the
+_downstream_ active and piping to _aplay_ as before, try
+
+  $ cat data/CANon.wav | ./upstream
+
+If your ear is more attuned to classical music than to electronic, you will
+likely prefer what you should now be hearing!
+
 
 Advanced usage:
 
