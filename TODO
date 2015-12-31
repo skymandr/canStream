@@ -29,13 +29,14 @@ Work log:
  - Implemented read messages from bus and print to stdout in downstream
  - Notifies user that CAN FD is not yet supported
  - Written draft of documentation in README.md
+ - Uses parsed arguments to initialise channel
+ - Uses parsed arguments to set dlc
 
 
 Remains:
- - Check return status from parsing
- - Use parsed arguments to initialise channel
+ - Verify that parsed arguments can be used to initialise channel
  - Use parsed arguments to set busrate
- - Use parsed arguments to set dlc
+ - Verify that parsed arguments can be used to set dlc
  - Finish markup of documentation in README.md
  - Test CANon example
  - Add to GitHub
