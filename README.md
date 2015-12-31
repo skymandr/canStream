@@ -97,12 +97,12 @@ writing or as sweet electronic beats!
 
 The reason the _sounddemo_ works is that raw sound is digitally represented as
 stream of bytes, which maps directly to the waveform of the sound.  The same
-goes for uncompressed sound formats, such as _wav_. In fact, lets try that
-next!  Under the _data_ folder, you can find a file called _CANon.wav_.  Let's
+goes for all uncompressed sound formats, such as _wav_. In fact, lets try that
+next!  Under the _data_ folder, you can find a file called _CANon.pcm_.  Let's
 try piping its contents just like we piped this README before.  With the
 _downstream_ active and piping to _aplay_ as before, try
 
-  $ cat data/CANon.wav | ./upstream
+  $ cat data/CANon.pcm | ./upstream
 
 If your ear is more attuned to classical music than to electronic, you will
 likely prefer what you should now be hearing!

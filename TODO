@@ -31,6 +31,7 @@ Work log:
  - Written draft of documentation in README.md
  - Uses parsed arguments to initialise channel
  - Uses parsed arguments to set dlc
+ - Added and tested CANon example
 
 
 Remains:
@@ -39,7 +40,6 @@ Remains:
  - Verify that parsed arguments can be used to set dlc
  - Use parsed arguments to set busrate
  - Finish markup of documentation in README.md
- - Test CANon example
  - Add to GitHub
  - Filter on message id?
  - CAN FD support
