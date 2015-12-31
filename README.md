@@ -1,4 +1,4 @@
-Sound of CAN
+CANstream
 
 This is a silly application of using the KVASER CANlib API to send data over
 a CAN bus.  The programs were written with sound in mind, but any kind of
