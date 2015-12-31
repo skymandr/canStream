@@ -73,8 +73,10 @@ int main (int argc, char* argv[]) {
         while(status == 0) {
             status = canReadWait(handle, &id, &message, &dlc, &flags, &time,
                                  args.timeout);
-            for(i = 0; i < dlc; i++) {
-                putchar(message[i]);
+            if (id == args.id) {
+                for(i = 0; i < dlc; i++) {
+                    putchar(message[i]);
+                }
             }
         }
         check("canClose", canClose(handle));

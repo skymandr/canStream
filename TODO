@@ -38,10 +38,10 @@ Work log:
  - Verified that parsed arguments can be used to set dlc
  - Verified that parsed arguments can be used to set id
  - Verified that parsed arguments can be used to set timeout
+ - Implemented filtering on message id
 
 
 Remains:
  - Use parsed arguments to set busrate
  - Add to GitHub
- - Filter on message id?
  - CAN FD support
