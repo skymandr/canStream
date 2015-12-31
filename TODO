@@ -39,9 +39,10 @@ Work log:
  - Verified that parsed arguments can be used to set id
  - Verified that parsed arguments can be used to set timeout
  - Implemented filtering on message id
+ - Uses parsed arguments to set busrate
 
 
 Remains:
- - Use parsed arguments to set busrate
+ - Verify that parsed arguments can be used to set busrate
  - Add to GitHub
  - CAN FD support

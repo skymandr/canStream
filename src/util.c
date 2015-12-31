@@ -42,39 +42,36 @@ static struct argp argp = { options, parseArg, doc, "" };
 
 error_t parseArg (int key, char* arg, struct argp_state* state)
 {
-  /* Get the input argument from argp_parse, which we
-     know is a pointer to our arguments structure. */
-  struct arguments *arguments = state->input;
+    /* Get the input argument from argp_parse, which we
+        know is a pointer to our arguments structure. */
+    struct arguments *arguments = state->input;
 
-  switch (key)
-    {
-    case 'c':
-      arguments->channel = atoi(arg);
-      break;
-    case 'b':
-      arguments->bitrate = atoi(arg);
-      break;
-    case 'f':
-      arguments->bitrateFd = atoi(arg);
-      break;
-    case 'l':
-      arguments->dlc = atoi(arg);
-      break;
-    case 'i':
-      arguments->id = atol(arg);
-      break;
-    case 't':
-      arguments->id = atol(arg);
-      break;
-
-    case ARGP_KEY_END:
-      break;
-
-    default:
-      return ARGP_ERR_UNKNOWN;
+    switch (key) {
+        case 'c':
+            arguments->channel = atoi(arg);
+            break;
+        case 'b':
+            arguments->bitrate = atoi(arg);
+            break;
+        case 'f':
+            arguments->bitrateFd = atoi(arg);
+            break;
+        case 'l':
+            arguments->dlc = atoi(arg);
+            break;
+        case 'i':
+            arguments->id = atol(arg);
+            break;
+        case 't':
+            arguments->id = atol(arg);
+            break;
+        case ARGP_KEY_END:
+            break;
+        default:
+            return ARGP_ERR_UNKNOWN;
     }
 
-  return 0;
+    return 0;
 }
 
 int parseArgs (int argc, char* argv[], struct arguments* arguments)
@@ -91,11 +88,45 @@ int parseArgs (int argc, char* argv[], struct arguments* arguments)
 // Functions for CANlib communication:
 
 int getPredefBitrate(int bitrate) {
-    return BAUD_1M;
+    switch (bitrate) {
+        case 1000000:
+            return canBITRATE_1M;
+        case 500000:
+            return canBITRATE_500K;
+        case 250000:
+            return canBITRATE_250K;
+        case 125000:
+            return canBITRATE_125K;
+        case 100000:
+            return canBITRATE_100K;
+        case 62500:
+            return canBITRATE_62K;
+        case 50000:
+            return canBITRATE_50K;
+        case 83000:
+            return canBITRATE_83K;
+        case 10000:
+            return canBITRATE_10K;
+        default:
+            return canBITRATE_1M;
+    }
 }
 
 int getPredefBitrateFd(int bitrateFd) {
-    return 0;
+    switch (bitrateFd) {
+        case 500000:
+            return canFD_BITRATE_500K_80P;
+        case 1000000:
+            return canFD_BITRATE_1M_80P;
+        case 2000000:
+            return canFD_BITRATE_2M_80P;
+        case 4000000:
+            return canFD_BITRATE_4M_80P;
+        case 8000000:
+            return canFD_BITRATE_8M_60P;
+        default:
+            return 0;
+    }
 }
 
 void check (char* id, canStatus stat)
@@ -131,9 +162,10 @@ canHandle initHandle (int channel, int bitrate, int bitrateFd)
 
     /* Translate the specified bitrate to CANlib constant */
     bitrate = getPredefBitrate(bitrate);
+    bitrateFd = getPredefBitrateFd(bitrateFd);
 
     /* Set bus parameters */
-    check("canSetBusParams", canSetBusParams(handle, BAUD_1M, 0, 0, 0, 0, 0));
+    check("canSetBusParams", canSetBusParams(handle, bitrate, 0, 0, 0, 0, 0));
 
     /* If FD bitrate has been specified, set also FD bitrate */
     if (bitrateFd) {
