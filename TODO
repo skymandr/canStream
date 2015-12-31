@@ -34,9 +34,10 @@ Work log:
 
 
 Remains:
+ - Argument parser is broken!
  - Verify that parsed arguments can be used to initialise channel
- - Use parsed arguments to set busrate
  - Verify that parsed arguments can be used to set dlc
+ - Use parsed arguments to set busrate
  - Finish markup of documentation in README.md
  - Test CANon example
  - Add to GitHub
