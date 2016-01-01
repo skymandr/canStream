@@ -31,7 +31,7 @@ char doc[] = "A program for reading data from stdin and sending it over the\n"
 
 int main (int argc, char* argv[]) {
     int channel, bitrate, bitrateFd, i;
-    unsigned int dlc;
+    unsigned int flags, dlc;
     unsigned char data[64] = {0};
     int status = 0;
     canHandle handle;
@@ -51,10 +51,11 @@ int main (int argc, char* argv[]) {
         return status;
     }
 
-    // CAN FD is not yet implemented...
+    // Set flags to canFDMSG_FDF if bitrateFd has been set:
     if (args.bitrateFd != 0) {
-        printf("CAN FD not yet implemented, sorry...\n");
-        printf("Will try to proceed with classic CAN!\n");
+        flags = canFDMSG_FDF;
+    } else {
+        flags = 0;
     }
 
     // Initialise handle:
@@ -71,7 +72,7 @@ int main (int argc, char* argv[]) {
             for(i = 0; i < args.dlc; i++) {
                 data[i] = getchar();
             }
-            status = canWrite(handle, args.id, data, args.dlc, 0);
+            status = canWrite(handle, args.id, data, args.dlc, flags);
             status = canWriteSync(handle, args.timeout);
         }
         check("canClose", canClose(handle));

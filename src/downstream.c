@@ -67,7 +67,7 @@ int main (int argc, char* argv[]) {
         printf("Could not initialise handle. Aborting...\n");
         status = handle;
     } else {
-        printf("Splendid! Will now look for messages and print what I"
+        printf("Splendid! Will now look for messages and print what I "
                "find.\n");
         printf("Press ^C to quit.\n");
         while(status == 0) {

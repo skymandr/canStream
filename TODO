@@ -40,9 +40,10 @@ Work log:
  - Verified that parsed arguments can be used to set timeout
  - Implemented filtering on message id
  - Uses parsed arguments to set busrate
+ - Implemented CAN FD support
 
 
 Remains:
  - Verify that parsed arguments can be used to set busrate
+ - Verify CAN FD support
  - Add to GitHub
- - CAN FD support

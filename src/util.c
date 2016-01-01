@@ -150,8 +150,13 @@ canHandle initHandle (int channel, int bitrate, int bitrateFd)
     siginterrupt(SIGINT, 1);
 
     /* Open channel, set parameters and go on bus */
-    handle = canOpenChannel(channel, canOPEN_EXCLUSIVE |
-                            canOPEN_REQUIRE_EXTENDED);
+    if (bitrateFd == 0) {
+        handle = canOpenChannel(channel, canOPEN_EXCLUSIVE |
+                                canOPEN_REQUIRE_EXTENDED | canOPEN_CAN_FD);
+    } else {
+        handle = canOpenChannel(channel, canOPEN_EXCLUSIVE |
+                                canOPEN_REQUIRE_EXTENDED);
+    }
     if (handle < 0) {
         printf("canOpenChannel %d failed\n", channel);
         return -1;
