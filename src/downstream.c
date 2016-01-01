@@ -21,7 +21,7 @@
 
 #include "util.h"
 
-const char* argp_program_version = "downstream v0.1";
+const char* argp_program_version = "downstream v0.9.1";
 
 const char* argp_program_bug_address = "<skymandr@fripost.org>";
 
