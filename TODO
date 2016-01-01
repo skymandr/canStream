@@ -41,9 +41,10 @@ Work log:
  - Implemented filtering on message id
  - Uses parsed arguments to set busrate
  - Implemented CAN FD support
+ - Verified that parsed arguments can be used to set busrates
 
 
 Remains:
- - Verify that parsed arguments can be used to set busrate
- - Verify CAN FD support
  - Add to GitHub
+ - Implement more graceful exit strategy...
+ - Verify CAN FD support
