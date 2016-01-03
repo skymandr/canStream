@@ -4,9 +4,9 @@ This is a silly application of using the Kvaser CANlib API to send data over
 a CAN bus.  The programs were written with sound in mind, but any kind of
 data will do -- see the examples below!
 
-> *Note:* The programs have not really been tested in a real CAN environment, in
-> paricular CAN FD has not been tested at all. Reports of your user-experiences
-> would therefore be greatly appreciated!
+> *Note:* The programs have not really been tested in a real CAN environment,
+> in paricular CAN FD has not been tested at all. Reports of your
+> user-experiences would therefore be greatly appreciated!
 
 ## Compiling:
 
@@ -17,16 +17,16 @@ To compile you will need Kvaser's Linux drivers and SDK, which can be found at
 The drivers and SDK are released under a dual BSD/GPLv2 license. Follow the
 instructions in the tar-ball to get started.
 
-> *Note:* For Kvaser CANlib driver versions up to and including v5.13 some kernel
-> modules use the `__DATE__`, `__TIME__` and `__TIMESTAMP__` macros to print
-> build time for debugging purposes.  In recent GCC versions (4.9+) GCC gives a
-> warnings for for using these macros, because these hamper making reproducible
-> builds.  Since the Kvaser drivers are compiled with `-Werror` flag by
-> default, which causes compile time warnings to be treated as errors.  This
-> causes an incompatibility between the drivers and the newer GCC versions.
-> The affected drivers are `leaf`, `mhydra` and `pciefd`.  The problem is
-> simple to circumvent by either removing -Werror from the Makefiles, or by
-> removing the offending lines (seven in total).
+> *Note:* For Kvaser CANlib driver versions up to and including v5.13 some
+> kernel modules use the `__DATE__`, `__TIME__` and `__TIMESTAMP__` macros to
+> print build time for debugging purposes.  In recent GCC versions (4.9+) GCC
+> gives warnings for using these macros, because these hamper making
+> reproducible builds.  Since the Kvaser drivers are compiled with `-Werror`
+> flag by default, which causes compile time warnings to be treated as errors,
+> the use of these macros causes an incompatibility between the drivers and the
+> newer GCC versions.  The affected drivers are `leaf`, `mhydra` and `pciefd`.
+> The problem is simple to circumvent by either removing `-Werror` from the
+> Makefiles, or by removing the offending lines (seven in total).
 
 Once CANlib is in place, you should be able to compile the programs by running
 make in the root of the source tree.  The binaries end up in the root as well;
@@ -54,8 +54,8 @@ The auxilliary program is
 >
 >    http://countercomplex.blogspot.com/search/label/algorithmic%20music
 >
-> This generates a stream of chars which are written to stdout, and can be piped
-> to an appropriate sound player to the amusement of the listerner.
+> This generates a stream of chars which are written to stdout, and can be
+> piped to an appropriate sound player to the amusement of the listerner.
 
 
 ## Usage guidelines:
