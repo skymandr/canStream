@@ -120,8 +120,8 @@ likely prefer what you should now be hearing!
 ## Advanced usage:
 
 By default `upstream` sends on channel 0 and `downstream` listens on channel 1,
-both with a *bitrate* of 1 Mbit/s,  with uniform *dlc*, *id* and *timout
-*settings.  The defaults can be overridden by command line options which are
+both with a *bitrate* of 1 Mbit/s,  with uniform *dlc*, *id* and *timeout*
+settings.  The defaults can be overridden by command line options which are
 the same for both programs; see
 
 >  `$ upstream --help`
