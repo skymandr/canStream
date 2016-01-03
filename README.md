@@ -4,6 +4,10 @@ This is a silly application of using the Kvaser CANlib API to send data over
 a CAN bus.  The programs were written with sound in mind, but any kind of
 data will do -- see the examples below!
 
+> *Note:* The programs have not really been tested in a real CAN environment, in
+> paricular CAN FD has not been tested at all. Reports of your user-experiences
+> would therefore be greatly appreciated!
+
 ## Compiling:
 
 To compile you will need Kvaser's Linux drivers and SDK, which can be found at
@@ -13,7 +17,7 @@ To compile you will need Kvaser's Linux drivers and SDK, which can be found at
 The drivers and SDK are released under a dual BSD/GPLv2 license. Follow the
 instructions in the tar-ball to get started.
 
-> Note: For Kvaser CANlib driver versions up to and including v5.13 some kernel
+> *Note:* For Kvaser CANlib driver versions up to and including v5.13 some kernel
 > modules use the `__DATE__`, `__TIME__` and `__TIMESTAMP__` macros to print
 > build time for debugging purposes.  In recent GCC versions (4.9+) GCC gives a
 > warnings for for using these macros, because these hamper making reproducible
@@ -127,7 +131,10 @@ for details!
 
 ## Future improvements:
 
+Testing the software on a real CAN bus...
+
 CAN FD support is desired in the future, for the authentic HiFi experience.
+It's there and *might* work, but I have no way of testing it...
 
 
 ## License:
