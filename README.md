@@ -139,9 +139,9 @@ It's there and *might* work, but I have no way of testing it...
 
 ## License:
 
-The source is released under the *GNU General Public License version 3*
-(GPLv3), except `sounddemo.c` which is public domain. See `LICENSE` for
-deails on GPLv3!
+The source code of this project is released under the *GNU General Public
+License version 3* (GPLv3), except `sounddemo.c` which is public domain.
+See `LICENSE` for deails on GPLv3!
 
 `CANon.pcm` is derivative of
 

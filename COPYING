@@ -1,6 +1,10 @@
 The source code of this project is released under the GNU General Public
 License version 3 (GPLv3), except sounddemo.c which is public domain.
-See LICENSE for deails on GPLv3!
+See the file LICENSE for deails on GPLv3, and see
+
+    http://countercomplex.blogspot.com/search/label/algorithmic%20music
+
+for more information about the algorithmic music produced by sounddemo!
 
 CANon.pcm is derivative of
 
