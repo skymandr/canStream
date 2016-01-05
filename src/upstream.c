@@ -17,6 +17,7 @@
  */
 
 #include <stdio.h>
+#include <signal.h>
 #include <canlib.h>
 
 #include "util.h"
@@ -28,13 +29,13 @@ const char* argp_program_bug_address = "<skymandr@fripost.org>";
 char doc[] = "A program for reading data from stdin and sending it over the\n"
              "CAN bus using the Kvaser CANlib API.";
 
+canHandle handle;
 
 int main (int argc, char* argv[]) {
     int channel, bitrate, bitrateFd, i;
     unsigned int flags, dlc;
     unsigned char data[64] = {0};
     int status = 0;
-    canHandle handle;
     struct arguments args;
 
     // Set default arguments:
@@ -67,6 +68,8 @@ int main (int argc, char* argv[]) {
         status = handle;
     } else {
         printf("Splendid! Will now listen to stdin and send what I find.\n");
+        // Register interrupt handler:
+        signal(SIGINT, cntrl_c_hndlr);
         printf("Press ^C to quit.\n");
         while(status == 0) {
             for(i = 0; i < args.dlc; i++) {

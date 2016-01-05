@@ -42,9 +42,10 @@ Work log:
  - Uses parsed arguments to set busrate
  - Implemented CAN FD support
  - Verified that parsed arguments can be used to set busrates
+ - Added to GitHub
+ - Implemented more graceful exit strategy
 
 
 Remains:
- - Add to GitHub
- - Implement more graceful exit strategy...
+ - Verify that it does what it is supposed to
  - Verify CAN FD support

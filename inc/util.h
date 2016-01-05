@@ -23,6 +23,9 @@
 #include <argp.h>
 
 
+// Interrupt handler:
+void cntrl_c_hndlr(int sig);
+
 // Functions for CANlib communication:
 void check (char* id, canStatus stat);
 

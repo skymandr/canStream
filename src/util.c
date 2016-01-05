@@ -187,3 +187,14 @@ canHandle initHandle (int channel, int bitrate, int bitrateFd)
 
     return handle;
 }
+
+// Interrupt handler:
+void cntrl_c_hndlr(int sig) {
+    extern canHandle handle;
+
+    printf("\n\nInterrupt received! Will now quit...\n\n");
+
+    check("canClose", canClose(handle));
+
+    exit(0);
+}
