@@ -44,7 +44,7 @@ main programs are:
 
 ### `downstream`
 
-> A program for reading data from a CAN bus and sending it to stdout.
+> A program for reading data from a CAN bus and sending it to `stdout`.
 
 The auxilliary program is
 
