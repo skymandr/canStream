@@ -9,7 +9,7 @@ SRCDIR = src
 # Linking:
 LDFLAGS = -lcanlib -lpthread
 
-# Compiler optionsh
+# Compiler options:
 CFLAGS = -O3 -L. $(LDFLAGS) -I$(IDIR)
 
 # Objects:
