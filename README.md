@@ -55,15 +55,15 @@ The auxilliary program is
 >    http://countercomplex.blogspot.com/search/label/algorithmic%20music
 >
 > This generates a stream of chars which are written to stdout, and can be
-> piped to an appropriate sound player to the amusement of the listerner.
+> piped to an appropriate sound player to the amusement of the listener.
 
 
 ## Usage guidelines:
 
 The general idea is to pipe a data source (such as an audio source) to
 `upstream`, which will send it to the CAN bus, while listening with
-`downstream` and piping or diverting its output to an application (such as a
-audio player) or a file.
+`downstream` and piping or diverting its output to an application (such as
+ an audio player) or a file.
 
 ### Setting up the receiving end:
 
