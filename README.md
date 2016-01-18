@@ -29,7 +29,7 @@ instructions in the tar-ball to get started.
 > Makefiles, or by removing the offending lines (seven in total).
 
 Once CANlib is in place, you should be able to compile the programs by running
-make in the root of the source tree.  The binaries end up in the root as well;
+`make` in the root of the source tree.  The binaries end up in the root as well;
 there is no install option.
 
 
