@@ -1,5 +1,6 @@
 FROM ubuntu:15.10
 
+# Install dependencies for Kvaser CANlib:
 RUN apt-get update && apt-get install -y \
     wget \
     build-essential \
@@ -8,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Install Kvaser CANlib
 RUN wget http://www.kvaser.com/software/7330130980754/V5_13_0/linuxcan.tar.gz && \
     tar -xzf linuxcan.tar.gz && \
     # Remove timestamps from files where they are used in order to suppress
@@ -25,6 +27,7 @@ RUN wget http://www.kvaser.com/software/7330130980754/V5_13_0/linuxcan.tar.gz &&
     make install && \
     rm /linuxcan.tar.gz
 
+# Install additional prerequisites for getting and testing canStream:
 RUN apt-get update && apt-get install -y \
     vim \
     alsa-utils \
@@ -33,6 +36,7 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Getting and making canStream:
 RUN wget --no-check-certificate https://github.com/skymandr/canStream/archive/master.zip && \
     unzip master.zip && \
     mv canStream-master canStream && \
