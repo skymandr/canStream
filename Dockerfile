@@ -1,7 +1,6 @@
 FROM ubuntu:15.10
 
 RUN apt-get update && apt-get install -y \
-    vim \
     wget \
     build-essential \
     linux-headers-`uname -r` \
@@ -25,3 +24,17 @@ RUN wget http://www.kvaser.com/software/7330130980754/V5_13_0/linuxcan.tar.gz &&
     make && \
     make install && \
     rm /linuxcan.tar.gz
+
+RUN apt-get update && apt-get install -y \
+    vim \
+    alsa-utils \
+    unzip \
+    --no-install-recommends && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN wget --no-check-certificate https://github.com/skymandr/canStream/archive/master.zip && \
+    unzip master.zip && \
+    mv canStream-master canStream && \
+    cd canStream && \
+    make
