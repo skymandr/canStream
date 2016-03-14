@@ -26,13 +26,16 @@ instructions in the tar-ball to get started.
 > the use of these macros causes an incompatibility between the drivers and the
 > newer GCC versions.  The affected drivers are `leaf`, `mhydra` and `pciefd`.
 > The problem is simple to circumvent by either removing `-Werror` from the
-> Makefiles, or by removing the offending lines (seven in total). (A more
-> elegant solution would be to use `#pragma GCC diagnostic` as described here:
-> https://gcc.gnu.org/onlinedocs/gcc/Diagnostic-Pragmas.html#Diagnostic-Pragmas)
+> Makefiles, by removing the offending lines (seven in total), or by using
+> `#pragma GCC diagnostic` as described here:
+> https://gcc.gnu.org/onlinedocs/gcc/Diagnostic-Pragmas.html#Diagnostic-Pragmas
+> On some systems another warning, `-Wframe-larger-than=`, can also occur.  This
+> is easiest to solve by using `#pragma GCC diagnostic`.  See the Dockerfile for
+> examples of both removing and using `#pragma GCC diagnostic`!
 
-Once CANlib is in place, you should be able to compile the programs by running
-`make` in the root of the source tree.  The binaries end up in the root as well;
-there is no install option.
+Once CANlib is in place, you should be able to compile the `canStream` programs
+by running `make` in the root of the source tree.  The binaries end up in the
+root as well; there is no install option.
 
 
 ## The programs:
