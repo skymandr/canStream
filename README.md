@@ -28,10 +28,14 @@ instructions in the tar-ball to get started.
 > The problem is simple to circumvent by either removing `-Werror` from the
 > Makefiles, by removing the offending lines (seven in total), or by using
 > `#pragma GCC diagnostic` as described here:
+>
 > https://gcc.gnu.org/onlinedocs/gcc/Diagnostic-Pragmas.html#Diagnostic-Pragmas
-> On some systems another warning, `-Wframe-larger-than=`, can also occur.  This
-> is easiest to solve by using `#pragma GCC diagnostic`.  See the Dockerfile for
-> examples of both removing and using `#pragma GCC diagnostic`!
+>
+> Of these three alternatives, the last is the most general and satisfying in my
+> humble opinion, especially since on some systems another warning,
+> `-Wframe-larger-than=`, can also occur, which is easiest to solve by using
+> `#pragma GCC diagnostic`.  See the Dockerfile for examples of both removing
+> the afflicted lines and of using `#pragma GCC diagnostic`!
 
 Once CANlib is in place, you should be able to compile the `canStream` programs
 by running `make` in the root of the source tree.  The binaries end up in the
