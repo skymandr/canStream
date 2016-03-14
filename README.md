@@ -32,7 +32,7 @@ instructions in the tar-ball to get started.
 >
 > https://gcc.gnu.org/onlinedocs/gcc/Diagnostic-Pragmas.html#Diagnostic-Pragmas
 >
-> `#pragma` can also be used to suppres `-Wdate-time`, but since this warning
+> `#pragma` can also be used to suppress `-Wdate-time`, but since this warning
 > only exists in later GCC versions that would lead to errors for old versions
 > instead -- a proper solution will likely have to look at the GCC version and
 > take appropriate action.  See the Dockerfile for examples of both removing the
