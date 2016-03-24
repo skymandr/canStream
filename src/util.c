@@ -63,7 +63,7 @@ error_t parseArg (int key, char* arg, struct argp_state* state)
             arguments->id = atol(arg);
             break;
         case 't':
-            arguments->id = atol(arg);
+            arguments->timeout = atol(arg);
             break;
         case ARGP_KEY_END:
             break;
