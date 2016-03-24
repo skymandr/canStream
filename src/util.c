@@ -87,7 +87,7 @@ int parseArgs (int argc, char* argv[], struct arguments* arguments)
 
 // Functions for CANlib communication:
 
-int getPredefBitrate(int bitrate) {
+int getPredefBitrate (int bitrate) {
     switch (bitrate) {
         case 1000000:
             return canBITRATE_1M;
@@ -112,7 +112,7 @@ int getPredefBitrate(int bitrate) {
     }
 }
 
-int getPredefBitrateFd(int bitrateFd) {
+int getPredefBitrateFd (int bitrateFd) {
     switch (bitrateFd) {
         case 500000:
             return canFD_BITRATE_500K_80P;
@@ -189,7 +189,7 @@ canHandle initHandle (int channel, int bitrate, int bitrateFd)
 }
 
 // Interrupt handler:
-void cntrl_c_hndlr(int sig) {
+void cntrl_c_hndlr (int sig) {
     extern canHandle handle;
 
     printf("\n\nInterrupt received! Will now quit...\n\n");
