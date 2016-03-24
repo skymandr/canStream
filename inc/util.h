@@ -32,7 +32,7 @@ void check (char* id, canStatus stat);
 canHandle initHandle (int channel, int bitrate, int bitrateFd);
 
 // Functions and constants for argument parser:
-struct arguments{
+struct arguments {
     int channel, bitrate, bitrateFd;
     unsigned int dlc;
     long id;
