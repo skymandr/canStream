@@ -1,4 +1,4 @@
-FROM ubuntu:15.10
+FROM ubuntu:latest
 
 # Install dependencies for Kvaser CANlib:
 RUN apt-get update && apt-get install -y \
