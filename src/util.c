@@ -38,7 +38,7 @@ struct argp_option options[] = {
 
 extern char doc[];
 
-static struct argp argp = { options, parseArg, doc, "" };
+static struct argp argp = { options, parseArg, "", doc };
 
 error_t parseArg (int key, char* arg, struct argp_state* state)
 {
