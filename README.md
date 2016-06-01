@@ -17,7 +17,7 @@ To compile you will need Kvaser's Linux drivers and SDK, which can be found at
 The drivers and SDK are released under a dual BSD/GPLv2 license. Follow the
 instructions in the tar-ball to get started.
 
-> *Note:* For Kvaser CANlib driver versions up to and including v5.13 some
+> *Note:* For Kvaser CANlib driver versions up to and including v5.15 some
 > kernel modules use the `__DATE__`, `__TIME__` and `__TIMESTAMP__` macros to
 > print build time for debugging purposes.  In recent GCC versions (4.9+) GCC
 > gives warnings for using these macros, because these hamper making
